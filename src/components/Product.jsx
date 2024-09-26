@@ -1,8 +1,17 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { fetchProductsAPI } from "../api/api-endpoint";
 import { calculatePriceWithDiscount } from "../utils/PriceWithDiscount";
 
 const Product = () => {
+  // Route navigate
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("UseEffect yang harus jalan di awal");
+  }, []);
+
+  // get data form API
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -26,7 +35,7 @@ const Product = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="flex flex-wrap justify-center gap-4">
+    <div className="flex flex-wrap justify-center gap-4 m-8">
       {products.map((product) => {
         const { originalPrice, discountedPrice, discountPercent } =
           calculatePriceWithDiscount(product.price);
@@ -43,7 +52,7 @@ const Product = () => {
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">
+              <h2 className="card-title font-bold text-2xl">
                 <a href={`/#/detail/${product.id}`} className="title">
                   {product.title}
                 </a>
@@ -71,7 +80,10 @@ const Product = () => {
               </div>
 
               <div className="flex justify-between gap-2 mt-3">
-                <button className="btn flex items-center flex-1">
+                <button
+                  className="btn flex items-center flex-1"
+                  onClick={() => navigate(`/detail/${product.id}`)}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

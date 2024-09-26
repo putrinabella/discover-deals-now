@@ -145,4 +145,15 @@
     text-align: justify;
     padding: 5px;
   }
+  .desc-detail {
+    // display: inline-block;
+    // text-overflow: ellipsis;
+    // overflow: hidden;
+    // word-wrap: break-word;
+    max-width: auto;
+    line-height: 1.5em;
+    // font-size: 15px;
+    text-align: justify;
+    // padding: 5px;
+  }
 }

@@ -1,16 +1,30 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("UseEffect yang harus jalan di awal");
+  }, []);
+
+  function handleClick() {
+    console.log("mau pindah");
+    navigate("/cart");
+  }
+
   return (
-    <div className="navbar bg-SageGreen mb-8">
+    <div className="navbar bg-SageGreen">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl text-white">Discover Deals Now</a>
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end">
           <div
-            // tabIndex={0}
-            // role="button"
             className="btn btn-ghost btn-circle"
             aria-label="Home"
+            role="button"
+            onClick={handleClick}
           >
             <div className="indicator">
               <svg

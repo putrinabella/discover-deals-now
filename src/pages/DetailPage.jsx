@@ -1,10 +1,11 @@
-import Navbar from "../components/Navbar";
+import DetailProduct from "../components/DetailProduct";
 
 const DetailPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <div className="flex-grow">
-        <Navbar />
+        {/* <h1>Detail Page</h1> */}
+        <DetailProduct />
       </div>
     </div>
   );
