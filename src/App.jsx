@@ -1,5 +1,5 @@
 import "./App.scss";
-import "./Responsive.scss";
+// import "./Responsive.scss";
 import HomePage from "./pages/HomePage";
 
 function App() {
