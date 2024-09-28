@@ -20,6 +20,12 @@ const Navbar = () => {
     navigate("/login");
   };
 
+  const handleLoginRedirect = () => {
+    navigate("/login");
+  };
+
+  const token = localStorage.getItem("token");
+
   return (
     <div className="navbar bg-SageGreen">
       <div className="flex-1">
@@ -116,12 +122,15 @@ const Navbar = () => {
                 <span className="badge">New</span>
               </a>
             </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a onClick={handleLogout}>Logout</a>
-            </li>
+            {token ? ( // Conditional rendering based on token
+              <li>
+                <a onClick={handleLogout}>Logout</a>
+              </li>
+            ) : (
+              <li>
+                <a onClick={handleLoginRedirect}>Login</a>
+              </li>
+            )}
           </ul>
         </div>
       </div>
