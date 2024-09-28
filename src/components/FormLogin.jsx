@@ -51,7 +51,7 @@ const FormLogin = () => {
                 className="grow"
                 placeholder="Username"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(event) => setUsername(event.target.value)}
                 required
               />
             </label>
@@ -73,7 +73,7 @@ const FormLogin = () => {
                 className="grow"
                 placeholder="Password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(event) => setPassword(event.target.value)}
                 required
               />
             </label>

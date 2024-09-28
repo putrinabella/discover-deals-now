@@ -34,9 +34,22 @@ const cartSlice = createSlice({
       state.items = []; // Clear all items from cart
       saveCartToLocalStorage(state.items); // Save to local storage
     },
+    updateQuantity: (state, action) => {
+      const existingItem = state.items.find(item => item.id === action.payload.id);
+      if (existingItem) {
+        // If the updated quantity is zero or less, remove the item
+        if (action.payload.quantity <= 0) {
+          state.items = state.items.filter(item => item.id !== existingItem.id);
+        } else {
+          // Otherwise, update the item's quantity
+          existingItem.quantity = action.payload.quantity;
+        }
+      }
+      saveCartToLocalStorage(state.items); // Save to local storage
+    },
   },
 });
 
-export const { addItem, removeItem, clearCart } = cartSlice.actions;
+export const { addItem, removeItem, clearCart, updateQuantity  } = cartSlice.actions;
 
 export default cartSlice.reducer;

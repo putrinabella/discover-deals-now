@@ -99,7 +99,9 @@ const DetailProduct = () => {
             <input
               type="number"
               value={quantity}
-              onChange={(e) => handleQuantityChange(parseInt(e.target.value))}
+              onChange={(event) =>
+                handleQuantityChange(parseInt(event.target.value))
+              }
               min="1"
               className="input input-bordered w-16 text-center mx-2"
             />
@@ -111,8 +113,7 @@ const DetailProduct = () => {
               +
             </button>
             <div className="ml-3">
-              <CartButton item={product} quantity={quantity} />{" "}
-              {/* Pass quantity here */}
+              <CartButton item={product} quantity={quantity} />
             </div>
           </div>
         </div>
