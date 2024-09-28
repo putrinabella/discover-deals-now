@@ -13,6 +13,13 @@ const Navbar = () => {
     navigate("/cart");
   }
 
+  const handleLogout = () => {
+    console.log("Logging out...");
+    // Remove the specific item from local storage
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   return (
     <div className="navbar bg-SageGreen">
       <div className="flex-1">
@@ -113,7 +120,7 @@ const Navbar = () => {
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <a onClick={handleLogout}>Logout</a>
             </li>
           </ul>
         </div>
