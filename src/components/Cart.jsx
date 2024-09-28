@@ -1,29 +1,32 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem, clearCart } from "../redux/cartSlice"; // Adjust the import path
+import { removeItem, clearCart } from "../features/cart/cartSlice";
 
 const Cart = () => {
-  const cartItems = useSelector((state) => state.cart.items);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); // Add useDispatch here
+  const items = useSelector((state) => state.cart.items);
+
+  // Calculate total quantity
+  const totalQuantity = items.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <div>
       <h1>Your Cart</h1>
-      {cartItems.length === 0 ? (
+      <h2>Total Items: {totalQuantity}</h2>
+      {items.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <ul>
-          {cartItems.map((item) => (
-            <li key={item.id}>
-              {item.name} - Quantity: {item.quantity}
-              <button onClick={() => dispatch(removeItem(item))}>Remove</button>
-            </li>
-          ))}
-        </ul>
+        items.map((item) => (
+          <div key={item.id}>
+            <h3>{item.title}</h3>
+            <p>Quantity: {item.quantity}</p>
+            {/* Add functionality to remove item */}
+            <button onClick={() => dispatch(removeItem(item))}>Remove</button>
+          </div>
+        ))
       )}
-      {cartItems.length > 0 && (
-        <button onClick={() => dispatch(clearCart())}>Clear Cart</button>
-      )}
+      <button onClick={() => dispatch(clearCart())}>Clear Cart</button>{" "}
+      {/* Clear Cart button */}
     </div>
   );
 };

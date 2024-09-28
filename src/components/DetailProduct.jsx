@@ -12,6 +12,8 @@ const DetailProduct = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  // Default quantity for add to cart
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,6 +43,13 @@ const DetailProduct = () => {
 
   const { originalPrice, discountedPrice, discountPercent } =
     calculatePriceWithDiscount(product.price);
+
+  // Handler to increase or decrease quantity
+  const handleQuantityChange = (newQuantity) => {
+    if (newQuantity >= 1) {
+      setQuantity(newQuantity);
+    }
+  };
 
   return (
     <div
@@ -77,18 +86,35 @@ const DetailProduct = () => {
         <div className="desc-detail mt-3">
           <p>{product.description}</p>
         </div>
-        <div className="card-actions justify-start mt-5">
-          <label className="form-control w-2/12 max-w-xs">
+        <div className="quantity-control mt-5">
+          <div className="flex items-center mb-5">
+            {/* Button to decrease quantity */}
+            <button
+              className="btn btn-outline btn-primary"
+              onClick={() => handleQuantityChange(quantity - 1)}
+            >
+              -
+            </button>
+            {/* Input field for quantity */}
             <input
-              type="text"
-              placeholder="Type here"
-              className="input input-bordered w-full max-w-xs"
+              type="number"
+              value={quantity}
+              onChange={(e) => handleQuantityChange(parseInt(e.target.value))}
+              min="1"
+              className="input input-bordered w-16 text-center mx-2"
             />
-            <div className="label">
-              <span className="label-text-alt">Input Quantity</span>
+            {/* Button to increase quantity */}
+            <button
+              className="btn btn-outline btn-primary"
+              onClick={() => handleQuantityChange(quantity + 1)}
+            >
+              +
+            </button>
+            <div className="ml-3">
+              <CartButton item={product} quantity={quantity} />{" "}
+              {/* Pass quantity here */}
             </div>
-          </label>
-          <CartButton item={product} />
+          </div>
         </div>
       </div>
     </div>

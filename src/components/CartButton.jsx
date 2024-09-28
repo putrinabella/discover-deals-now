@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItem } from "../features/cart/cartSlice";
 
-const CartButton = ({ item }) => {
+const CartButton = ({ item, quantity }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -12,12 +12,10 @@ const CartButton = ({ item }) => {
     if (!token) {
       navigate("/login");
     } else {
-      dispatch(addItem(item));
-      console.log(`${item.title} added to cart!`);
+      dispatch(addItem({ ...item, quantity }));
+      console.log(`${item.title} added to cart with quantity ${quantity}`);
     }
   };
-
-  //   console.log("CartButton item:", item);
 
   return (
     <button className="btn flex items-center flex-1" onClick={handleAddToCart}>

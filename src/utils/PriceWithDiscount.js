@@ -1,6 +1,6 @@
 export const calculatePriceWithDiscount = (price) => {
 
-    const discounts = [5, 10, 15];
+    const discounts = [5];
 
     // Select a random discount from the array
     const randomDiscount = discounts[Math.floor(Math.random() * discounts.length)];

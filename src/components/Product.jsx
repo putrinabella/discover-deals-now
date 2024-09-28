@@ -125,7 +125,7 @@ const Product = () => {
                   </svg>
                   <span className="flex-1 text-left">Detail</span>
                 </button>
-                <CartButton item={product} />
+                <CartButton item={product} quantity={1} />
               </div>
             </div>
           </div>

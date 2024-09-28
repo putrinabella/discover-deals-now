@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 
 import HomePage from "../pages/HomePage";
 import DetailPage from "../pages/DetailPage";
+import CartPage from "../pages/CartPage";
+
 import LoginPage from "../pages/LoginPage";
 
 import MainLayout from "../layout/MainLayout";
@@ -26,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "detail/:id",
         element: <DetailPage />,
+      },
+      {
+        path: "cart",
+        element: <CartPage />,
       },
     ],
   },

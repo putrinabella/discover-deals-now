@@ -1,24 +1,38 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const LOCAL_STORAGE_KEY = 'cartItems';
+
+const saveCartToLocalStorage = (cartItems) => {
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cartItems));
+};
+
+const loadCartFromLocalStorage = () => {
+  const storedItems = localStorage.getItem(LOCAL_STORAGE_KEY);
+  return storedItems ? JSON.parse(storedItems) : [];
+};
+
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
-    items: [],
+    items: loadCartFromLocalStorage(), // Load items from local storage
   },
   reducers: {
     addItem: (state, action) => {
       const existingItem = state.items.find(item => item.id === action.payload.id);
       if (existingItem) {
-        existingItem.quantity += 1; // Increment quantity if item exists
+        existingItem.quantity += action.payload.quantity; // Increment by the specified quantity
       } else {
-        state.items.push({ ...action.payload, quantity: 1 }); // Add new item
+        state.items.push({ ...action.payload }); // Add new item without overriding quantity
       }
-    },
+      saveCartToLocalStorage(state.items); // Save to local storage
+    },    
     removeItem: (state, action) => {
       state.items = state.items.filter(item => item.id !== action.payload.id); // Remove item from cart
+      saveCartToLocalStorage(state.items); // Save to local storage
     },
     clearCart: (state) => {
       state.items = []; // Clear all items from cart
+      saveCartToLocalStorage(state.items); // Save to local storage
     },
   },
 });
