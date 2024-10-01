@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, redirect } from "react-router-dom";
 
 import HomePage from "../pages/HomePage";
 import DetailPage from "../pages/DetailPage";
@@ -13,13 +13,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    // loader: () => {
-    //   if (!localStorage.getItem("access_token")) {
-    //     return redirect("/login");
-    //   }
-
-    //   return "Boleh masuk";
-    // },
     children: [
       {
         path: "/",
@@ -32,6 +25,12 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: <CartPage />,
+        loader: () => {
+          if (!localStorage.getItem("token")) {
+            return redirect("/login");
+          }
+          return null;
+        },
       },
     ],
   },

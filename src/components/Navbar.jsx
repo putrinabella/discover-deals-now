@@ -10,12 +10,12 @@ const Navbar = () => {
   // Calculate total quantity of items in the cart
   const totalQuantity = cartItems.reduce(
     (total, item) => total + item.quantity,
-    0
+    0 //initial value
   );
   // Calculate subtotal price
   const subtotal = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
-    0
+    0 // initial value
   );
 
   // Format subtotal as currency
@@ -37,6 +37,7 @@ const Navbar = () => {
     console.log("Logging out...");
     // Remove the specific item from local storage
     localStorage.removeItem("token");
+    localStorage.removeItem("productStock");
     navigate("/login");
   };
 
@@ -51,7 +52,7 @@ const Navbar = () => {
   const token = localStorage.getItem("token");
 
   return (
-    <div className="navbar bg-SageGreen fixed top-0 left-0 right-0 z-50 shadow-lg">
+    <div className="navbar bg-SunflowerPetalYellow fixed top-0 left-0 right-0 z-50 shadow-lg">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl text-white">Discover Deals Now</a>
       </div>

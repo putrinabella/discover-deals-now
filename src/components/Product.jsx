@@ -71,8 +71,8 @@ const Product = () => {
                   </a>
                 </h2>
                 <div className="card-actions justify-start">
-                  <div className="badge badge-secondary">
-                    <p>⭐ {product.rating.rate}/5</p>
+                  <div className="badge bg-SunflowerLeafGreen">
+                    <p className="text-white">⭐ {product.rating.rate}/5</p>
                   </div>
                   <div className="badge badge-outline">{product.category}</div>
                 </div>

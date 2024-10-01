@@ -76,8 +76,8 @@ const DetailProduct = () => {
           <span className="text-lg text-red-500">-{discountPercent}% off!</span>
         </div>
         <div className="card-actions justify-start">
-          <div className="badge badge-secondary p-4">
-            <p className="text-lg">⭐ {product.rating.rate}/5</p>
+          <div className="badge bg-SunflowerLeafGreen p-4">
+            <p className="text-lg text-white">⭐ {product.rating.rate}/5</p>
           </div>
           <div className="badge badge-outline text-lg p-4">
             {product.category}

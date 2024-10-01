@@ -1,5 +1,5 @@
 #E4E6D9: LightGrayishGreen
 #C0CFB2: PaleSage
-#6C8776: SageGreen
+#6C8776: SunflowerPetalYellow
 #45624E: DeepMossGreen
 #27526: DarkForest

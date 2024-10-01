@@ -15,6 +15,9 @@ export default {
         SageGreen: '#6C8776',
         DeepMossGreen: '#45624E',
         DarkForest: '#27526',
+        SunflowerPetalYellow: '#FFD54F',
+        SunflowerLeafGreen: '#6B8E23',
+        SoftSunflowerYellow: '#FFF8E1'
       },
     },
   },
