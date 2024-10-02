@@ -115,7 +115,7 @@ const Cart = () => {
             </h1>
             <button
               onClick={handleHomeRedirect}
-              className="btn btn-primary m-5"
+              className="btn bg-yellow-300 m-5"
             >
               Go Shopping!
             </button>
@@ -148,7 +148,10 @@ const Cart = () => {
                         </label>
                       </th>
                       <td>
-                        <div className="flex items-center gap-3">
+                        <div
+                          className="flex items-center gap-3"
+                          onClick={() => navigate(`/detail/${product.id}`)}
+                        >
                           <div className="avatar h-16">
                             <img
                               src={product.image}

@@ -108,11 +108,11 @@ const Navbar = () => {
           >
             <div className="card-body">
               <span className="text-lg font-bold">{totalQuantity} Items</span>
-              <span className="text-info">Subtotal: {formattedSubtotal}</span>
+              <span className="text-bold">Subtotal: {formattedSubtotal}</span>
               <div className="card-actions">
                 <button
                   onClick={handleCartRedirect}
-                  className="btn btn-primary btn-block"
+                  className="btn bg-yellow-300 btn-block"
                 >
                   View cart
                 </button>
@@ -146,12 +146,12 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            <li>
+            {/* <li>
               <a className="justify-between">
                 Profile
                 <span className="badge">New</span>
               </a>
-            </li>
+            </li> */}
             {token ? ( // Conditional rendering based on token
               <li>
                 <a onClick={handleLogoutRedirect}>Logout</a>
