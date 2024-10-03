@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchProductsAPI } from "../api/api-product";
 import { calculatePriceWithDiscount } from "../utils/PriceWithDiscount";
-import CartButton from "./CartButton";
+import QuantityControl from "./QuantityControl";
 
 const DetailProduct = () => {
   // Route navigate
@@ -86,37 +86,11 @@ const DetailProduct = () => {
         <div className="desc-detail mt-3">
           <p>{product.description}</p>
         </div>
-        <div className="quantity-control mt-5">
-          <div className="flex items-center mb-5">
-            {/* Button to decrease quantity */}
-            <button
-              className="btn btn-outline btn-primary"
-              onClick={() => handleQuantityChange(quantity - 1)}
-            >
-              -
-            </button>
-            {/* Input field for quantity */}
-            <input
-              type="number"
-              value={quantity}
-              onChange={(event) =>
-                handleQuantityChange(parseInt(event.target.value))
-              }
-              min="1"
-              className="input input-bordered w-16 text-center mx-2"
-            />
-            {/* Button to increase quantity */}
-            <button
-              className="btn btn-outline btn-primary"
-              onClick={() => handleQuantityChange(quantity + 1)}
-            >
-              +
-            </button>
-            <div className="ml-3">
-              <CartButton item={product} quantity={quantity} />
-            </div>
-          </div>
-        </div>
+        <QuantityControl
+          quantity={quantity}
+          handleQuantityChange={handleQuantityChange}
+          product={product}
+        />
       </div>
     </div>
   );
